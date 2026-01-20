@@ -1,0 +1,1083 @@
+/* ============================================
+   ELEVATE TALENT PARTNERS - STYLES
+   Modern, minimal hiring firm website
+   ============================================ */
+
+/* --------------------------------------------
+   CSS Custom Properties (Design Tokens)
+   -------------------------------------------- */
+:root {
+    /* Color Palette */
+    --color_bg_primary: #F8F8F8;
+    --color_text_primary: #162721;
+    --color_text_secondary: #6B6E6C;
+    --color_border: #BCBDBC;
+    --color_accent_primary: #FE6B38;
+    --color_accent_secondary: #7A2602;
+    --color_white: #FFFFFF;
+
+    /* Typography */
+    --font_family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font_size_xs: 0.75rem;
+    --font_size_sm: 0.875rem;
+    --font_size_base: 1rem;
+    --font_size_lg: 1.125rem;
+    --font_size_xl: 1.25rem;
+    --font_size_2xl: 1.5rem;
+    --font_size_3xl: 2rem;
+    --font_size_4xl: 2.5rem;
+    --font_size_5xl: 3.5rem;
+
+    /* Spacing */
+    --space_xs: 0.25rem;
+    --space_sm: 0.5rem;
+    --space_md: 1rem;
+    --space_lg: 1.5rem;
+    --space_xl: 2rem;
+    --space_2xl: 3rem;
+    --space_3xl: 4rem;
+    --space_4xl: 6rem;
+    --space_5xl: 8rem;
+
+    /* Layout */
+    --container_max: 1200px;
+    --border_radius_sm: 4px;
+    --border_radius_md: 8px;
+    --border_radius_lg: 12px;
+    --border_radius_xl: 16px;
+
+    /* Transitions */
+    --transition_fast: 150ms ease;
+    --transition_base: 250ms ease;
+
+    /* Animation Tokens */
+    --animation_duration_fast: 200ms;
+    --animation_duration_base: 300ms;
+    --animation_duration_slow: 400ms;
+    --animation_easing: cubic-bezier(0.16, 1, 0.3, 1);
+    --animation_reveal_distance: 12px;
+}
+
+/* --------------------------------------------
+   Reset & Base Styles
+   -------------------------------------------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font_family);
+    font-size: var(--font_size_base);
+    line-height: 1.6;
+    color: var(--color_text_primary);
+    background-color: var(--color_bg_primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition_fast);
+}
+
+ul {
+    list-style: none;
+}
+
+/* --------------------------------------------
+   Layout Utilities
+   -------------------------------------------- */
+.container {
+    width: 100%;
+    max-width: var(--container_max);
+    margin: 0 auto;
+    padding: 0 var(--space_lg);
+}
+
+/* --------------------------------------------
+   Typography
+   -------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color_text_primary);
+}
+
+.text_accent {
+    color: var(--color_accent_primary);
+}
+
+/* --------------------------------------------
+   Buttons
+   -------------------------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space_md) var(--space_xl);
+    font-family: var(--font_family);
+    font-size: var(--font_size_base);
+    font-weight: 600;
+    border-radius: var(--border_radius_md);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition_base);
+}
+
+.btn_primary {
+    background-color: var(--color_accent_primary);
+    color: var(--color_white);
+    border-color: var(--color_accent_primary);
+}
+
+.btn_primary:hover {
+    background-color: var(--color_accent_secondary);
+    border-color: var(--color_accent_secondary);
+}
+
+.btn_secondary {
+    background-color: transparent;
+    color: var(--color_text_primary);
+    border-color: var(--color_border);
+}
+
+.btn_secondary:hover {
+    border-color: var(--color_text_primary);
+}
+
+.btn_outline {
+    background-color: transparent;
+    color: var(--color_white);
+    border-color: var(--color_white);
+}
+
+.btn_outline:hover {
+    background-color: var(--color_white);
+    color: var(--color_accent_primary);
+}
+
+.btn_large {
+    padding: var(--space_lg) var(--space_2xl);
+    font-size: var(--font_size_lg);
+}
+
+/* --------------------------------------------
+   Header / Navbar
+   -------------------------------------------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--color_bg_primary);
+    transition: box-shadow var(--transition_base);
+}
+
+.header_scrolled {
+    box-shadow: 0 1px 0 var(--color_border);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+}
+
+.logo {
+    font-size: var(--font_size_2xl);
+    font-weight: 700;
+    color: var(--color_text_primary);
+}
+
+.logo_accent {
+    color: var(--color_accent_primary);
+}
+
+.nav_links {
+    display: flex;
+    align-items: center;
+    gap: var(--space_2xl);
+}
+
+.nav_link {
+    font-size: var(--font_size_sm);
+    font-weight: 500;
+    color: var(--color_text_secondary);
+    transition: color var(--transition_fast);
+}
+
+.nav_link:hover,
+.nav_link.active {
+    color: var(--color_text_primary);
+}
+
+.nav_link_cta {
+    padding: var(--space_sm) var(--space_lg);
+    background-color: var(--color_accent_primary);
+    color: var(--color_white) !important;
+    border-radius: var(--border_radius_md);
+}
+
+.nav_link_cta:hover {
+    background-color: var(--color_accent_secondary);
+}
+
+/* Mobile Menu Toggle */
+.mobile_menu_toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.hamburger_line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color_text_primary);
+    transition: all var(--transition_fast);
+}
+
+.menu_active .hamburger_line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu_active .hamburger_line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu_active .hamburger_line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* --------------------------------------------
+   Hero Section
+   -------------------------------------------- */
+.hero {
+    padding-top: calc(72px + var(--space_4xl));
+    padding-bottom: var(--space_4xl);
+    background-color: var(--color_bg_primary);
+}
+
+.hero_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space_3xl);
+    align-items: center;
+}
+
+.hero_headline {
+    font-size: var(--font_size_5xl);
+    margin-bottom: var(--space_lg);
+    letter-spacing: -0.02em;
+}
+
+.hero_subtext {
+    font-size: var(--font_size_lg);
+    color: var(--color_text_secondary);
+    margin-bottom: var(--space_2xl);
+    max-width: 480px;
+}
+
+.hero_cta_group {
+    display: flex;
+    gap: var(--space_md);
+    flex-wrap: wrap;
+}
+
+.hero_image {
+    position: relative;
+}
+
+.hero_image img {
+    border-radius: var(--border_radius_xl);
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+}
+
+/* --------------------------------------------
+   Trust Bar Section
+   -------------------------------------------- */
+.trust_bar {
+    padding: var(--space_3xl) 0;
+    border-top: 1px solid var(--color_border);
+    border-bottom: 1px solid var(--color_border);
+}
+
+.trust_stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space_xl);
+    text-align: center;
+}
+
+.trust_stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_xs);
+}
+
+.stat_number {
+    font-size: var(--font_size_3xl);
+    font-weight: 700;
+    color: var(--color_accent_primary);
+}
+
+.stat_label {
+    font-size: var(--font_size_sm);
+    color: var(--color_text_secondary);
+}
+
+/* --------------------------------------------
+   Section Styles (Shared)
+   -------------------------------------------- */
+.section_header {
+    text-align: center;
+    margin-bottom: var(--space_3xl);
+}
+
+.section_title {
+    font-size: var(--font_size_3xl);
+    margin-bottom: var(--space_md);
+}
+
+.section_subtitle {
+    font-size: var(--font_size_lg);
+    color: var(--color_text_secondary);
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------
+   Services Section
+   -------------------------------------------- */
+.services {
+    padding: var(--space_5xl) 0;
+}
+
+.services_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space_xl);
+}
+
+.service_card {
+    background-color: var(--color_white);
+    padding: var(--space_2xl);
+    border-radius: var(--border_radius_lg);
+    border: 1px solid var(--color_border);
+    transition: border-color var(--transition_base);
+}
+
+.service_card:hover {
+    border-color: var(--color_accent_primary);
+}
+
+.service_icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color_bg_primary);
+    border-radius: var(--border_radius_md);
+    margin-bottom: var(--space_lg);
+    color: var(--color_accent_primary);
+}
+
+.service_title {
+    font-size: var(--font_size_xl);
+    margin-bottom: var(--space_sm);
+}
+
+.service_description {
+    font-size: var(--font_size_sm);
+    color: var(--color_text_secondary);
+    line-height: 1.7;
+}
+
+/* --------------------------------------------
+   Industries Section
+   -------------------------------------------- */
+.industries {
+    padding: var(--space_5xl) 0;
+    background-color: var(--color_white);
+}
+
+.industries_grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space_lg);
+}
+
+.industry_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space_md);
+    padding: var(--space_2xl) var(--space_lg);
+    background-color: var(--color_bg_primary);
+    border-radius: var(--border_radius_lg);
+    text-align: center;
+    transition: all var(--transition_base);
+}
+
+.industry_card:hover {
+    transform: translateY(-4px);
+}
+
+.industry_icon {
+    color: var(--color_accent_primary);
+}
+
+.industry_name {
+    font-size: var(--font_size_base);
+    font-weight: 600;
+    color: var(--color_text_primary);
+}
+
+/* --------------------------------------------
+   About Section
+   -------------------------------------------- */
+.about {
+    padding: var(--space_5xl) 0;
+}
+
+.about_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space_4xl);
+    align-items: center;
+}
+
+.about_image img {
+    border-radius: var(--border_radius_xl);
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5/4;
+    object-fit: cover;
+}
+
+.about_text .section_title {
+    text-align: left;
+    margin-bottom: var(--space_lg);
+}
+
+.about_description {
+    color: var(--color_text_secondary);
+    margin-bottom: var(--space_lg);
+}
+
+.about_features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_md);
+    margin-top: var(--space_xl);
+}
+
+.about_feature {
+    display: flex;
+    align-items: center;
+    gap: var(--space_md);
+    font-weight: 500;
+}
+
+.feature_check {
+    color: var(--color_accent_primary);
+    font-weight: 700;
+}
+
+/* --------------------------------------------
+   CTA Section
+   -------------------------------------------- */
+.cta_section {
+    padding: var(--space_5xl) 0;
+    background-color: var(--color_text_primary);
+}
+
+.cta_content {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.cta_title {
+    font-size: var(--font_size_3xl);
+    color: var(--color_white);
+    margin-bottom: var(--space_lg);
+}
+
+.cta_subtitle {
+    font-size: var(--font_size_lg);
+    color: var(--color_border);
+    margin-bottom: var(--space_2xl);
+}
+
+.cta_buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space_md);
+    flex-wrap: wrap;
+}
+
+/* --------------------------------------------
+   Footer
+   -------------------------------------------- */
+.footer {
+    padding: var(--space_4xl) 0 var(--space_xl);
+    background-color: var(--color_white);
+    border-top: 1px solid var(--color_border);
+}
+
+.footer_content {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    gap: var(--space_4xl);
+    margin-bottom: var(--space_3xl);
+}
+
+.footer_brand .logo {
+    margin-bottom: var(--space_lg);
+    display: inline-block;
+}
+
+.footer_description {
+    font-size: var(--font_size_sm);
+    color: var(--color_text_secondary);
+    max-width: 280px;
+}
+
+.footer_links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space_xl);
+}
+
+.footer_heading {
+    font-size: var(--font_size_sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space_lg);
+    color: var(--color_text_primary);
+}
+
+.footer_list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space_sm);
+}
+
+.footer_list a {
+    font-size: var(--font_size_sm);
+    color: var(--color_text_secondary);
+}
+
+.footer_list a:hover {
+    color: var(--color_accent_primary);
+}
+
+.footer_bottom {
+    padding-top: var(--space_xl);
+    border-top: 1px solid var(--color_border);
+    text-align: center;
+}
+
+.copyright {
+    font-size: var(--font_size_sm);
+    color: var(--color_text_secondary);
+}
+
+/* --------------------------------------------
+   Responsive Design
+   -------------------------------------------- */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    :root {
+        --font_size_5xl: 2.75rem;
+        --font_size_3xl: 1.75rem;
+    }
+
+    .services_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .industries_grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .about_content {
+        gap: var(--space_2xl);
+    }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) {
+    :root {
+        --font_size_5xl: 2.25rem;
+        --font_size_4xl: 2rem;
+        --font_size_3xl: 1.5rem;
+    }
+
+    .mobile_menu_toggle {
+        display: flex;
+    }
+
+    .nav_links {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex-direction: column;
+        background-color: var(--color_bg_primary);
+        padding: var(--space_2xl);
+        gap: var(--space_lg);
+        transform: translateX(100%);
+        transition: transform var(--transition_base);
+    }
+
+    .nav_links.nav_open {
+        transform: translateX(0);
+    }
+
+    .nav_link_cta {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero_content {
+        grid-template-columns: 1fr;
+        gap: var(--space_2xl);
+    }
+
+    .hero_text {
+        order: 1;
+    }
+
+    .hero_image {
+        order: 0;
+    }
+
+    .trust_stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space_2xl);
+    }
+
+    .services_grid {
+        grid-template-columns: 1fr;
+    }
+
+    .industries_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about_content {
+        grid-template-columns: 1fr;
+    }
+
+    .about_image {
+        order: 0;
+    }
+
+    .about_text {
+        order: 1;
+    }
+
+    .footer_content {
+        grid-template-columns: 1fr;
+        gap: var(--space_2xl);
+    }
+
+    .footer_links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+    :root {
+        --font_size_5xl: 1.875rem;
+        --font_size_3xl: 1.375rem;
+    }
+
+    .container {
+        padding: 0 var(--space_md);
+    }
+
+    .hero {
+        padding-top: calc(72px + var(--space_2xl));
+        padding-bottom: var(--space_2xl);
+    }
+
+    .hero_cta_group {
+        flex-direction: column;
+    }
+
+    .hero_cta_group .btn {
+        width: 100%;
+    }
+
+    .industries_grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta_buttons {
+        flex-direction: column;
+    }
+
+    .cta_buttons .btn {
+        width: 100%;
+    }
+
+    .footer_links {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   ANIMATIONS & MICRO-INTERACTIONS
+   Professional, subtle motion design
+   ============================================ */
+
+/* --------------------------------------------
+   Keyframe Animations
+   -------------------------------------------- */
+
+/* Fade in with upward movement */
+@keyframes fade_in_up {
+    from {
+        opacity: 0;
+        transform: translateY(var(--animation_reveal_distance));
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Simple fade in */
+@keyframes fade_in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* --------------------------------------------
+   Hero Entry Animations (Page Load)
+   -------------------------------------------- */
+.hero_headline {
+    opacity: 0;
+    animation: fade_in_up var(--animation_duration_slow) var(--animation_easing) forwards;
+    animation-delay: 100ms;
+}
+
+.hero_subtext {
+    opacity: 0;
+    animation: fade_in_up var(--animation_duration_slow) var(--animation_easing) forwards;
+    animation-delay: 200ms;
+}
+
+.hero_cta_group {
+    opacity: 0;
+    animation: fade_in_up var(--animation_duration_slow) var(--animation_easing) forwards;
+    animation-delay: 300ms;
+}
+
+.hero_image {
+    opacity: 0;
+    animation: fade_in var(--animation_duration_slow) var(--animation_easing) forwards;
+    animation-delay: 150ms;
+}
+
+/* --------------------------------------------
+   Scroll-Based Reveal Animations
+   -------------------------------------------- */
+
+/* Initial hidden state for scroll-reveal elements */
+.scroll_reveal {
+    opacity: 0;
+    transform: translateY(var(--animation_reveal_distance));
+    transition:
+        opacity var(--animation_duration_slow) var(--animation_easing),
+        transform var(--animation_duration_slow) var(--animation_easing);
+}
+
+/* Revealed state (triggered by Intersection Observer) */
+.scroll_reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delays for grid children */
+.scroll_reveal_stagger>*:nth-child(1) {
+    transition-delay: 0ms;
+}
+
+.scroll_reveal_stagger>*:nth-child(2) {
+    transition-delay: 60ms;
+}
+
+.scroll_reveal_stagger>*:nth-child(3) {
+    transition-delay: 120ms;
+}
+
+.scroll_reveal_stagger>*:nth-child(4) {
+    transition-delay: 180ms;
+}
+
+.scroll_reveal_stagger>*:nth-child(5) {
+    transition-delay: 240ms;
+}
+
+/* --------------------------------------------
+   Enhanced Button Interactions
+   -------------------------------------------- */
+.btn {
+    transition:
+        background-color var(--animation_duration_fast) var(--animation_easing),
+        border-color var(--animation_duration_fast) var(--animation_easing),
+        color var(--animation_duration_fast) var(--animation_easing),
+        transform var(--animation_duration_fast) var(--animation_easing),
+        box-shadow var(--animation_duration_fast) var(--animation_easing);
+}
+
+.btn_primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(254, 107, 56, 0.25);
+}
+
+.btn_primary:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn_secondary:hover {
+    transform: translateY(-2px);
+}
+
+.btn_secondary:active {
+    transform: translateY(0);
+}
+
+.btn_outline:hover {
+    transform: translateY(-2px);
+}
+
+/* --------------------------------------------
+   Navigation Link Hover Effects
+   -------------------------------------------- */
+.nav_link {
+    position: relative;
+    transition: color var(--animation_duration_fast) var(--animation_easing);
+}
+
+/* Underline reveal on hover (non-CTA links) */
+.nav_link:not(.nav_link_cta)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color_accent_primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--animation_duration_base) var(--animation_easing);
+}
+
+.nav_link:not(.nav_link_cta):hover::after,
+.nav_link:not(.nav_link_cta).active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* CTA nav button */
+.nav_link_cta {
+    transition:
+        background-color var(--animation_duration_fast) var(--animation_easing),
+        transform var(--animation_duration_fast) var(--animation_easing);
+}
+
+.nav_link_cta:hover {
+    transform: translateY(-1px);
+}
+
+/* --------------------------------------------
+   Service Card Hover Effects
+   -------------------------------------------- */
+.service_card {
+    transition:
+        border-color var(--animation_duration_base) var(--animation_easing),
+        transform var(--animation_duration_base) var(--animation_easing),
+        box-shadow var(--animation_duration_base) var(--animation_easing);
+}
+
+.service_card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(22, 39, 33, 0.06);
+}
+
+.service_icon {
+    transition:
+        background-color var(--animation_duration_base) var(--animation_easing),
+        color var(--animation_duration_base) var(--animation_easing),
+        transform var(--animation_duration_base) var(--animation_easing);
+}
+
+.service_card:hover .service_icon {
+    background-color: var(--color_accent_primary);
+    color: var(--color_white);
+    transform: scale(1.05);
+}
+
+/* --------------------------------------------
+   Industry Card Hover Effects
+   -------------------------------------------- */
+.industry_card {
+    transition:
+        transform var(--animation_duration_base) var(--animation_easing),
+        box-shadow var(--animation_duration_base) var(--animation_easing);
+}
+
+.industry_card:hover {
+    box-shadow: 0 6px 16px rgba(22, 39, 33, 0.06);
+}
+
+.industry_icon {
+    transition: transform var(--animation_duration_base) var(--animation_easing);
+}
+
+.industry_card:hover .industry_icon {
+    transform: scale(1.1);
+}
+
+/* --------------------------------------------
+   Image Hover Effects
+   -------------------------------------------- */
+.hero_image img,
+.about_image img {
+    transition: transform var(--animation_duration_slow) var(--animation_easing);
+}
+
+.hero_image:hover img,
+.about_image:hover img {
+    transform: scale(1.02);
+}
+
+/* --------------------------------------------
+   Trust Stats Hover
+   -------------------------------------------- */
+.trust_stat {
+    transition: transform var(--animation_duration_fast) var(--animation_easing);
+}
+
+.trust_stat:hover {
+    transform: translateY(-2px);
+}
+
+.stat_number {
+    transition: color var(--animation_duration_fast) var(--animation_easing);
+}
+
+.trust_stat:hover .stat_number {
+    color: var(--color_accent_secondary);
+}
+
+/* --------------------------------------------
+   Footer Link Hover Effects
+   -------------------------------------------- */
+.footer_list a {
+    transition:
+        color var(--animation_duration_fast) var(--animation_easing),
+        transform var(--animation_duration_fast) var(--animation_easing);
+    display: inline-block;
+}
+
+.footer_list a:hover {
+    transform: translateX(2px);
+}
+
+/* --------------------------------------------
+   About Feature Hover
+   -------------------------------------------- */
+.about_feature {
+    transition: transform var(--animation_duration_fast) var(--animation_easing);
+}
+
+.about_feature:hover {
+    transform: translateX(4px);
+}
+
+.feature_check {
+    transition: transform var(--animation_duration_fast) var(--animation_easing);
+}
+
+.about_feature:hover .feature_check {
+    transform: scale(1.2);
+}
+
+/* ============================================
+   ACCESSIBILITY: Reduced Motion
+   Respects user preference for reduced motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .hero_headline,
+    .hero_subtext,
+    .hero_cta_group,
+    .hero_image {
+        opacity: 1;
+        animation: none;
+    }
+
+    .scroll_reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
