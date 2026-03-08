@@ -634,7 +634,7 @@ h6 {
     }
 
     .services_grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .industries_grid {
@@ -656,6 +656,8 @@ h6 {
 
     .mobile_menu_toggle {
         display: flex;
+        z-index: 1001;
+        position: relative;
     }
 
     .nav_links {
@@ -663,17 +665,27 @@ h6 {
         top: 72px;
         left: 0;
         right: 0;
-        bottom: 0;
+        height: calc(100vh - 72px);
+        height: calc(100dvh - 72px);
         flex-direction: column;
         background-color: var(--color_bg_primary);
         padding: var(--space_2xl);
         gap: var(--space_lg);
         transform: translateX(100%);
         transition: transform var(--transition_base);
+        z-index: 1000;
+        overflow-y: auto;
     }
 
     .nav_links.nav_open {
         transform: translateX(0);
+    }
+
+    /* Override page-load animations on mobile to ensure nav links are visible */
+    .nav_links li {
+        opacity: 1;
+        animation: none;
+        transform: none;
     }
 
     .nav_link_cta {
@@ -838,7 +850,7 @@ h6 {
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
     }
 }
 
