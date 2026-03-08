@@ -623,6 +623,87 @@ h6 {
 }
 
 /* --------------------------------------------
+   Testimonials Section
+   -------------------------------------------- */
+.testimonials {
+    padding: var(--space_5xl) 0;
+    background-color: var(--color_bg_primary);
+    border-top: 1px solid var(--color_border);
+}
+
+.testimonials_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space_xl);
+}
+
+.testimonial_card {
+    background-color: var(--color_white);
+    padding: var(--space_2xl);
+    border-radius: var(--border_radius_lg);
+    border: 1px solid var(--color_border);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition_base), box-shadow var(--transition_base), border-color var(--transition_base);
+}
+
+.testimonial_card:hover {
+    border-color: var(--color_accent_primary);
+    transform: translateY(var(--animation_card_lift)) scale(1.01);
+    box-shadow: 0 12px 28px rgba(22, 39, 33, 0.08), 0 4px 8px rgba(22, 39, 33, 0.04);
+}
+
+.testimonial_content {
+    margin-bottom: var(--space_xl);
+}
+
+.quote_icon {
+    color: var(--color_accent_primary);
+    margin-bottom: var(--space_md);
+    opacity: 0.8;
+}
+
+.testimonial_text {
+    font-size: var(--font_size_base);
+    color: var(--color_text_primary);
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.testimonial_author {
+    display: flex;
+    align-items: center;
+    gap: var(--space_md);
+    border-top: 1px solid var(--color_border);
+    padding-top: var(--space_lg);
+}
+
+.author_image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color_accent_primary);
+}
+
+.author_details {
+    display: flex;
+    flex-direction: column;
+}
+
+.author_name {
+    font-size: var(--font_size_sm);
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.author_role {
+    font-size: var(--font_size_xs);
+    color: var(--color_text_secondary);
+}
+
+/* --------------------------------------------
    Responsive Design
    -------------------------------------------- */
 
@@ -639,6 +720,10 @@ h6 {
 
     .industries_grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .testimonials_grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .about_content {
@@ -717,6 +802,10 @@ h6 {
 
     .industries_grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .testimonials_grid {
+        grid-template-columns: 1fr;
     }
 
     .about_content {
