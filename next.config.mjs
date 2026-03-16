@@ -1,5 +1,6 @@
 const nextConfig = {
   output: 'export',
+  basePath: '/united-career-solutions',
   images: {
     unoptimized: true,
     remotePatterns: [
